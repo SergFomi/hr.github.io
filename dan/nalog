@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гид по налоговым вычетам для ИП</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px;
+            border-radius: 8px;
+        }
+
+        .alert strong {
+            color: #856404;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subsection {
+            margin: 25px 0;
+            padding-left: 20px;
+        }
+
+        .subsection-title {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .list-item {
+            margin: 10px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .list-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .nested-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .nested-item {
+            margin: 8px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #764ba2;
+        }
+
+        .process-flow {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .process-step {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 5px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .arrow {
+            display: inline-block;
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 0 10px;
+        }
+
+        .checklist {
+            background: #d4edda;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .checklist-item {
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #28a745;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .links {
+            background: #e3f2fd;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .link-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: #bbdefb;
+        }
+
+        .link-item a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link-item a:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+            }
+
+            .process-step {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .arrow {
+                display: block;
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Гид по налоговым вычетам для ИП</h1>
+            <p>Пошаговая инструкция без лишней бюрократии</p>
+        </div>
+
+        <div class="alert">
+            <strong>⚠️ Важно:</strong> налоговый вычет по НДФЛ можно получить только с доходов, с которых уплачен НДФЛ 13/15% (зарплата, доход ИП на ОСНО и т.п.).
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title"><span class="icon">🔸</span> Предварительные действия</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">Проверка возможности получения вычета</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            <strong>ИП на ОСНО</strong> платит НДФЛ с предпринимательского дохода и следовательно может вернуть часть этого налога.
+                        </div>
+                        <div class="list-item">
+                            <strong>ИП на УСН/ПСН/НПД</strong> вычетом НДФЛ не уменьшает свой налог по режиму. Но если у тебя параллельно есть зарплата по найму или другой доход, с которого удерживали НДФЛ (13-15%), то ты можешь вернуть этот НДФЛ как обычное физлицо.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Определи тип вычета</h3>
+                    <div class="list">
+                        <div class="list-item">💰 <strong>Имущественный</strong> — покупка/строительство жилья и т.п.</div>
+                        <div class="list-item">🏥 <strong>Социальный</strong> — обучение, лечение и т.п.</div>
+                        <div class="list-item">📈 <strong>Инвестиционный</strong> — брокерский счёт и т.д.</div>
+                        <div class="list-item">📝 <strong>Стандартные/профессиональные</strong> — по ситуации</div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">Собери пакет документов</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            <strong>Основные документы:</strong>
+                            <div class="nested-list">
+                                <div class="nested-item">✓ Паспорт и ИНН</div>
+                            </div>
+                        </div>
+                        
+                        <div class="list-item">
+                            <strong>Документы по расходу:</strong>
+                            <div class="nested-list">
+                                <div class="nested-item"><strong>Имущественный:</strong> ДКП/акт, выписка ЕГРН, ипотечный договор, справка банка об уплаченных процентах, платёжки</div>
+                                <div class="nested-item"><strong>Социальный:</strong> договор с вузом/клиникой, лицензия организации, чеки/квитанции</div>
+                                <div class="nested-item"><strong>Инвестиционный:</strong> отчёты брокера/управляющей компании</div>
+                            </div>
+                        </div>
+
+                        <div class="list-item">
+                            <strong>Документы по доходу:</strong>
+                            <div class="nested-list">
+                                <div class="nested-item">2-НДФЛ от работодателя (если есть работа по найму) или в ЛК ФНС</div>
+                                <div class="nested-item">Для ИП на ОСНО — данные по доходу и расходам для 3-НДФЛ</div>
+                            </div>
+                        </div>
+
+                        <div class="list-item">
+                            <strong>Дополнительно:</strong>
+                            <div class="nested-list">
+                                <div class="nested-item">Реквизиты счёта для возврата налога</div>
+                                <div class="nested-item">При необходимости: допсоглашения, акты, страховки, договор ИИС/ДДУ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="icon">🔸</span> Порядок подачи документов</h2>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">1. Собрать все документы</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            ⚠️ По каждому расходу должен быть договор. Без подтверждения ФНС просто не даст вычет.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">2. Заполнить декларацию 3-НДФЛ</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            <strong>🌐 Через личный кабинет ФНС</strong> (оптимальный вариант):
+                            <div class="nested-list">
+                                <div class="nested-item">→ Заходишь в ЛК через госуслуги</div>
+                                <div class="nested-item">→ Выбираешь «Заполнить декларацию 3-НДФЛ»</div>
+                                <div class="nested-item">→ Вносишь доходы (зарплата, предпринимательский доход)</div>
+                                <div class="nested-item">→ В разделе «Вычеты» отмечаешь нужный тип</div>
+                                <div class="nested-item">→ Прикрепляешь сканы/фото документов</div>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <strong>📱 Через Госуслуги</strong> (запасной вариант):
+                            <div class="nested-list">
+                                <div class="nested-item">Нужна усиленная неквалифицированная электронная подпись (УНЭП) в приложении «Госключ»</div>
+                                <div class="nested-item">Далее по тем же шагам, данные подтянутся автоматически</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">3. Составить заявление на возврат налога</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            Лучше прямо внутри ЛК ФНС после отправки 3-НДФЛ:
+                            <div class="nested-list">
+                                <div class="nested-item">→ Ищешь список своих деклараций 3-НДФЛ</div>
+                                <div class="nested-item">→ В карточке декларации есть кнопка «Подать заявление на возврат»</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">4. Отправить всё в налоговую</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            <strong>Личный кабинет ФНС:</strong>
+                            <div class="nested-list">
+                                <div class="nested-item">В разделе «Жизненные ситуации» → «Подать заявление на возврат налога»</div>
+                                <div class="nested-item">Система автоматически подставит сумму к возврату</div>
+                                <div class="nested-item">Укажи: номер счёта, БИК банка, паспортные данные</div>
+                            </div>
+                        </div>
+                        <div class="list-item">Альтернативы: Госуслуги или лично в инспекцию/по почте</div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">5. Ждать проверку и деньги</h3>
+                    <div class="list">
+                        <div class="list-item">⏱️ Камеральная проверка декларации — до 3 месяцев</div>
+                        <div class="list-item">💰 Возврат денег на счёт — до 1 месяца после проверки</div>
+                        <div class="list-item">🚀 Упрощённый порядок (данные от банка/брокера) — до 1 месяца</div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3 class="subsection-title">6. Реагировать на запросы ФНС</h3>
+                    <div class="list">
+                        <div class="list-item">
+                            Если прилетят запросы на доп.документы/пояснения — просто докладываешь, иначе могут урезать вычет или затянуть процесс.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="icon">⚙️</span> Бизнес-процесс</h2>
+                <div class="process-flow">
+                    <div class="process-step">Проверка права</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Сбор документов</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Заполнение 3-НДФЛ</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Подача заявления</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Проверка ФНС</div>
+                    <span class="arrow">→</span>
+                    <div class="process-step">Возврат денег</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="icon">✔️</span> Чеклист по этапам</h2>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <div class="checkbox"></div>
+                        <span>Проверить, имеешь ли право на вычет</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox"></div>
+                        <span>Собрать документы (паспорт, договоры, чеки, 2-НДФЛ)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox"></div>
+                        <span>Подать 3-НДФЛ через ЛК ФНС</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox"></div>
+                        <span>Подать заявление (ЛК ФНС → Жизненные ситуации)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox"></div>
+                        <span>Дождаться проверки (до 3 месяцев)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="icon">🖇️</span> Важные ссылки</h2>
+                <div class="links">
+                    <div class="link-item">
+                        1. <a href="https://www.nalog.gov.ru/rn77/" target="_blank">Личный кабинет ФНС</a>
+                    </div>
+                    <div class="link-item">
+                        2. <a href="https://service.nalog.ru/static/tax-return.html?ref=destralegal.ru" target="_blank">Подача заявления на возврат через ФНС</a>
+                    </div>
+                    <div class="link-item">
+                        3. <a href="https://www.gosuslugi.ru/620224/1/form" target="_blank">Подача 3-НДФЛ через Госуслуги</a>
+                    </div>
+                    <div class="link-item">
+                        4. <a href="https://www.gosuslugi.ru/613514/1/form" target="_blank">Подача заявки в инспекцию ФНС</a>
+                    </div>
+                    <div class="link-item">
+                        5. <a href="https://www.gosuslugi.ru/620224/1/form" target="_blank">Где подать декларацию 3-НДФЛ (гайд от госуслуг)</a>
+                    </div>
+                    <div class="link-item">
+                        6. <a href="https://simple-decision.com/nalogovy-vychet?" target="_blank">Отличие разных налоговых вычетов</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
