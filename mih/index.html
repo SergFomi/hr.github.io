@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>План поиска работы - Backend Developer</title>
+    <title>План действий: Поиск remote работы для Backend Developer</title>
     <style>
         * {
             margin: 0;
@@ -11,62 +11,52 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --text: #374151;
+            --border: #e5e7eb;
+        }
+
         body {
-            font-family: 'Courier New', monospace;
-            background: #0d1117;
-            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text);
             line-height: 1.6;
+            min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: #161b22;
-            border-radius: 6px;
-            border: 1px solid #30363d;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #0d1117 0%, #1f2937 100%);
-            padding: 40px;
-            border-bottom: 2px solid #58a6ff;
-            position: relative;
-            overflow: hidden;
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
         }
 
-        .header::before {
-            content: '{ }';
-            position: absolute;
-            font-size: 200px;
-            color: #21262d;
-            right: -50px;
-            top: -70px;
-            opacity: 0.3;
-        }
-
-        .header h1 {
+        header h1 {
             font-size: 2.5em;
-            color: #58a6ff;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+            font-weight: 700;
         }
 
-        .header .subtitle {
-            color: #8b949e;
+        header p {
             font-size: 1.1em;
-        }
-
-        .terminal-line {
-            color: #7ee787;
-            margin-top: 20px;
-            font-size: 0.9em;
-        }
-
-        .terminal-line::before {
-            content: '$ ';
-            color: #58a6ff;
+            opacity: 0.95;
         }
 
         .content {
@@ -75,277 +65,364 @@
 
         .phase {
             margin-bottom: 50px;
-            border-left: 3px solid #f85149;
+            border-left: 5px solid var(--primary);
             padding-left: 30px;
             position: relative;
         }
 
-        .phase::before {
-            content: '⚡';
-            position: absolute;
-            left: -15px;
-            background: #0d1117;
-            padding: 5px;
-            font-size: 1.2em;
+        .phase:nth-child(1) {
+            border-left-color: var(--primary);
+        }
+
+        .phase:nth-child(2) {
+            border-left-color: var(--secondary);
+        }
+
+        .phase:nth-child(3) {
+            border-left-color: var(--accent);
         }
 
         .phase-header {
-            background: #21262d;
-            padding: 20px;
-            margin: 0 0 30px -30px;
-            border-radius: 6px;
-            border-left: 3px solid #f85149;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .phase-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .phase:nth-child(1) .phase-number {
+            background: var(--primary);
+        }
+
+        .phase:nth-child(2) .phase-number {
+            background: var(--secondary);
+        }
+
+        .phase:nth-child(3) .phase-number {
+            background: var(--accent);
         }
 
         .phase-title {
+            flex: 1;
+        }
+
+        .phase-title h2 {
             font-size: 1.8em;
-            color: #f85149;
+            color: var(--dark);
             margin-bottom: 5px;
         }
 
         .phase-duration {
-            color: #8b949e;
+            display: inline-block;
+            background: var(--light);
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.9em;
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .section {
             margin-bottom: 35px;
-            background: #0d1117;
+            background: var(--light);
             padding: 25px;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
         }
 
-        .section:hover {
-            border-color: #58a6ff;
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
-        }
-
-        .section-number {
-            display: inline-block;
-            background: #58a6ff;
-            color: #0d1117;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .section-title {
-            font-size: 1.4em;
-            color: #58a6ff;
+        .section h3 {
+            color: var(--dark);
+            font-size: 1.3em;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
-        .goal {
-            background: #1f6feb20;
-            border-left: 3px solid #58a6ff;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .goal-label {
-            color: #58a6ff;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .task-list {
-            margin: 15px 0;
-        }
-
-        .task-item {
-            background: #21262d;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 4px;
-            border-left: 3px solid #7ee787;
-            transition: all 0.2s ease;
-        }
-
-        .task-item:hover {
-            transform: translateX(5px);
-            border-left-color: #58a6ff;
-        }
-
-        .task-item strong {
-            color: #7ee787;
-        }
-
-        .nested-list {
-            margin: 10px 0 10px 20px;
-            padding-left: 15px;
-            border-left: 2px solid #30363d;
-        }
-
-        .nested-item {
-            padding: 8px 0;
-            color: #8b949e;
-        }
-
-        .nested-item::before {
-            content: '→ ';
-            color: #58a6ff;
-        }
-
-        .code-block {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            position: relative;
-            overflow-x: auto;
-        }
-
-        .code-block::before {
-            content: 'example.txt';
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            color: #8b949e;
-            font-size: 0.8em;
-        }
-
-        .code-block pre {
-            color: #c9d1d9;
-            white-space: pre-wrap;
-        }
-
-        .highlight {
-            color: #ffa657;
-            font-weight: bold;
-        }
-
-        .metric {
-            background: #1f6feb20;
-            color: #58a6ff;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            display: inline-block;
-            margin: 3px;
-        }
-
-        .project-example {
-            background: #21262d;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-        }
-
-        .project-title {
-            color: #ffa657;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-
-        .metrics-grid {
-            background: #0d1117;
-            padding: 30px;
-            border-radius: 6px;
-            margin: 30px 0;
-            border: 2px solid #7ee787;
-        }
-
-        .metrics-title {
-            color: #7ee787;
-            font-size: 1.5em;
+        .section-goal {
+            background: white;
+            padding: 12px 15px;
+            border-left: 3px solid var(--secondary);
             margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .metric-row {
-            margin: 15px 0;
-            padding: 15px;
-            background: #21262d;
             border-radius: 4px;
+            font-style: italic;
+            color: var(--text);
         }
 
-        .metric-label {
-            color: #8b949e;
-            margin-bottom: 5px;
-        }
-
-        .checklist {
-            background: #21262d;
-            padding: 25px;
+        .checklist, .info-box {
+            background: white;
+            padding: 20px;
             border-radius: 6px;
-            margin: 20px 0;
-            border: 1px solid #30363d;
-        }
-
-        .checklist-title {
-            color: #ffa657;
-            font-size: 1.3em;
             margin-bottom: 15px;
         }
 
         .checklist-item {
-            padding: 12px;
-            margin: 8px 0;
-            background: #0d1117;
-            border-radius: 4px;
             display: flex;
-            align-items: center;
-            gap: 15px;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: flex-start;
         }
 
-        .checklist-item::before {
-            content: '☐';
-            color: #7ee787;
-            font-size: 1.5em;
+        .checklist-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--secondary);
+            border-radius: 4px;
+            color: var(--secondary);
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item input[type="checkbox"]:checked {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .checklist-item input[type="checkbox"]:checked::after {
+            content: "✓";
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .text-content {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .text-content p {
+            margin-bottom: 12px;
+        }
+
+        .text-content strong {
+            color: var(--dark);
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #f3f4f6;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border-top: 3px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-card h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .metric-card p {
+            color: var(--text);
+            font-size: 0.95em;
         }
 
         .important-note {
-            background: #f8514920;
-            border-left: 4px solid #f85149;
-            padding: 20px;
-            margin: 20px 0;
+            background: #fef3c7;
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
             border-radius: 4px;
+            margin: 20px 0;
+            color: #92400e;
         }
 
         .important-note strong {
-            color: #f85149;
-            display: block;
+            color: #78350f;
+        }
+
+        .daily-checklist {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .daily-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .daily-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .daily-time {
+            background: var(--primary);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85em;
+            white-space: nowrap;
+            height: fit-content;
+        }
+
+        .daily-content h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+
+        .daily-content p {
+            color: var(--text);
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        .template-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            font-size: 0.95em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h4 {
+            color: var(--dark);
             margin-bottom: 10px;
             font-size: 1.1em;
         }
 
-        .timeline {
-            background: #21262d;
-            padding: 30px;
-            border-radius: 6px;
-            margin: 30px 0;
-        }
-
-        .timeline-title {
-            color: #58a6ff;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .timeline-item {
-            padding: 15px;
+        .project-card .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
             margin: 10px 0;
-            border-left: 4px solid #7ee787;
-            padding-left: 20px;
         }
 
-        .timeline-date {
-            color: #ffa657;
+        .tech-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .project-card .metric {
+            background: var(--light);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.95em;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text);
+        }
+
+        .requirements-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
             font-weight: bold;
         }
 
+        footer {
+            background: var(--light);
+            padding: 30px 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         @media (max-width: 768px) {
-            .header h1 {
+            header h1 {
                 font-size: 1.8em;
             }
 
@@ -354,312 +431,255 @@
             }
 
             .phase {
-                padding-left: 15px;
+                padding-left: 20px;
             }
 
-            .phase-header {
-                margin-left: -15px;
+            .metrics-grid, .projects-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        .tip {
-            background: #7ee78720;
-            border-left: 3px solid #7ee787;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
+        .goal-highlight {
+            background: #dcfce7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 500;
         }
 
-        .tip::before {
-            content: '💡 ';
-            font-size: 1.2em;
-        }
-
-        .warning {
-            background: #ffa65720;
-            border-left: 3px solid #ffa657;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .warning::before {
-            content: '⚠️ ';
-            font-size: 1.2em;
+        .highlight-num {
+            background: #fed7aa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>// План для Михаила по поиску удаленной работы как разработчик</h1>
-            <div class="subtitle">Поиск remote работы для Backend Developer</div>
-            <div class="terminal-line">execute job_search_strategy.sh --mode=aggressive --async=true</div>
-        </div>
+        <header>
+            <h1>🚀 План действий</h1>
+            <p>Поиск remote работы для Backend Developer</p>
+        </header>
 
         <div class="content">
-            <!-- Фаза 1 -->
+
+            <!-- ФАЗА 1 -->
             <div class="phase">
                 <div class="phase-header">
-                    <div class="phase-title">Фаза 1: Подготовка базы</div>
-                    <div class="phase-duration">⏱️ 2-3 недели</div>
+                    <div class="phase-number">1</div>
+                    <div class="phase-title">
+                        <h2>Подготовка базы</h2>
+                        <span class="phase-duration">⏱️ 2–3 недели</span>
+                    </div>
                 </div>
 
                 <!-- 1.1 GitHub Portfolio -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">1.1</span>
-                        GitHub Portfolio
-                    </h3>
+                    <h3>📦 1.1 GitHub Portfolio</h3>
+                    <div class="section-goal">Показать, что ты делаешь рабочий код, который решает проблемы</div>
 
-                    <div class="goal">
-                        <div class="goal-label">Цель:</div>
-                        Показать, что ты делаешь рабочий код, который решает проблемы
+                    <div class="text-content">
+                        <p><strong>Что делать:</strong></p>
+                        <p>Создать <span class="highlight-num">2–3</span> полноценных проекта (не учебные, а как будто для реального бизнеса)</p>
                     </div>
 
-                    <div class="task-list">
-                        <div class="task-item">
-                            <strong>Что делать:</strong>
-                            <div class="nested-list">
-                                <div class="nested-item">Создать 2-3 полноценных проекта (не учебные, а как будто для реального бизнеса)</div>
+                    <div class="info-box">
+                        <strong>Каждый проект должен иметь:</strong>
+                        <ul class="requirements-list">
+                            <li>Подробный README с описанием проблемы и решения</li>
+                            <li>Схему архитектуры (можно в Miro/Figma → скриншот)</li>
+                            <li>Инструкцию по запуску (Docker compose для простоты)</li>
+                            <li>Примеры API запросов (Postman коллекция или Swagger)</li>
+                            <li>CI/CD pipeline (GitHub Actions)</li>
+                            <li>Unit тесты с покрытием</li>
+                        </ul>
+                    </div>
+
+                    <h4 style="margin-top: 25px; margin-bottom: 15px; color: var(--dark);">📋 Примеры проектов:</h4>
+
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h4>1. Microservice для аналитики</h4>
+                            <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">(то, что ты умеешь)</p>
+                            <div class="tech">
+                                <span class="tech-tag">ASP.NET Core</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">RabbitMQ</span>
                             </div>
+                            <p style="margin-top: 10px; font-size: 0.95em;">Обработка больших объемов данных, кеширование, очереди</p>
+                            <div class="metric">📊 обрабатывает 10K запросов/сек</div>
                         </div>
 
-                        <div class="task-item">
-                            <strong>Каждый проект должен иметь:</strong>
-                            <div class="nested-list">
-                                <div class="nested-item">Подробный README с описанием проблемы и решения</div>
-                                <div class="nested-item">Схему архитектуры (можно в Miro/Figma → скриншот)</div>
-                                <div class="nested-item">Инструкцию по запуску (Docker compose для простоты)</div>
-                                <div class="nested-item">Примеры API запросов (Postman коллекция или Swagger)</div>
-                                <div class="nested-item">CI/CD pipeline (GitHub Actions)</div>
-                                <div class="nested-item">Unit тесты с покрытием</div>
+                        <div class="project-card">
+                            <h4>2. Telegram Bot + Admin Panel</h4>
+                            <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">(актуально для рынка)</p>
+                            <div class="tech">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Payments</span>
                             </div>
+                            <p style="margin-top: 10px; font-size: 0.95em;">API, React панель, интеграция с платежами</p>
+                            <div class="metric">👥 ready for 100K+ users</div>
+                        </div>
+
+                        <div class="project-card">
+                            <h4>3. Интеграционный сервис</h4>
+                            <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">(покажет твой скилл)</p>
+                            <div class="tech">
+                                <span class="tech-tag">API Parsing</span>
+                                <span class="tech-tag">Webhooks</span>
+                                <span class="tech-tag">Data Transform</span>
+                                <span class="tech-tag">Validation</span>
+                            </div>
+                            <p style="margin-top: 10px; font-size: 0.95em;">Парсер данных, трансформация, валидация</p>
+                            <div class="metric">🔄 синхронизирует 50K записей/день</div>
                         </div>
                     </div>
 
-                    <div class="project-example">
-                        <div class="project-title">Примеры проектов:</div>
-                        
-                        <div style="margin: 15px 0;">
-                            <strong style="color: #7ee787;">1. Microservice для аналитики</strong> (то, что ты умеешь):
-                            <div class="nested-list">
-                                <div class="nested-item">ASP.NET Core WebAPI + PostgreSQL</div>
-                                <div class="nested-item">Обработка больших объемов данных</div>
-                                <div class="nested-item">Кеширование (Redis), очереди (RabbitMQ)</div>
-                                <div class="nested-item"><span class="metric">Метрика: "обрабатывает 10K запросов/сек"</span></div>
-                            </div>
-                        </div>
-
-                        <div style="margin: 15px 0;">
-                            <strong style="color: #7ee787;">2. Telegram Bot + Admin Panel</strong> (актуально для рынка):
-                            <div class="nested-list">
-                                <div class="nested-item">Node.js/Express API</div>
-                                <div class="nested-item">React admin панель</div>
-                                <div class="nested-item">Интеграция с платежами</div>
-                                <div class="nested-item"><span class="metric">Метрика: "ready for 100K+ users"</span></div>
-                            </div>
-                        </div>
-
-                        <div style="margin: 15px 0;">
-                            <strong style="color: #7ee787;">3. Интеграционный сервис</strong> (покажет твой скилл):
-                            <div class="nested-list">
-                                <div class="nested-item">Парсер данных с внешних API</div>
-                                <div class="nested-item">Трансформация и валидация данных</div>
-                                <div class="nested-item">Webhook обработка</div>
-                                <div class="nested-item"><span class="metric">Метрика: "синхронизирует 50K записей/день"</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="warning">
-                        <strong>Важно:</strong> В описании каждого проекта указывай ЦИФРЫ и РЕЗУЛЬТАТ, не технологии.
+                    <div class="important-note">
+                        <strong>⚠️ Важно:</strong> В описании каждого проекта указывай <strong>ЦИФРЫ и РЕЗУЛЬТАТ</strong>, не технологии.
                     </div>
                 </div>
 
-                <!-- 1.2 Личный сайт -->
+                <!-- 1.2 Personal Portfolio Site -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">1.2</span>
-                        Личный сайт-портфолио
-                    </h3>
+                    <h3>🌐 1.2 Личный сайт-портфолио</h3>
+                    <div class="section-goal">Показать себя как продукт, а не просто кодера</div>
 
-                    <div class="goal">
-                        <div class="goal-label">Цель:</div>
-                        Показать себя как продукт, а не просто кодера
-                    </div>
-
-                    <div class="task-item">
+                    <div class="info-box">
                         <strong>Что должно быть на сайте:</strong>
-                        <div class="nested-list">
-                            <div class="nested-item">Hero секция: "Backend Engineer | 5 лет опыта | Remote-only"</div>
-                            <div class="nested-item">Кейсы: 3 проекта с GitHub с акцентом на бизнес-результаты</div>
-                            <div class="nested-item">Цифры: "Оптимизировал запросы → снизил нагрузку на 30%"</div>
-                            <div class="nested-item">Стек: Технологии с иконками (визуально)</div>
-                            <div class="nested-item">Контакты: Email, LinkedIn, GitHub, Telegram</div>
-                            <div class="nested-item">CTA: "Open for remote opportunities" с кнопкой на календарь или форму</div>
-                        </div>
+                        <ul class="requirements-list">
+                            <li><strong>Hero секция:</strong> "Backend Engineer | 5 лет опыта | Remote-only"</li>
+                            <li><strong>Кейсы:</strong> 3 проекта с GitHub с акцентом на бизнес-результаты</li>
+                            <li><strong>Цифры:</strong> "Оптимизировал запросы → снизил нагрузку на 30%"</li>
+                            <li><strong>Стек:</strong> Технологии с иконками (визуально)</li>
+                            <li><strong>Контакты:</strong> Email, LinkedIn, GitHub, Telegram</li>
+                            <li><strong>CTA:</strong> "Open for remote opportunities" с кнопкой на календарь или форму</li>
+                        </ul>
                     </div>
 
-                    <div class="task-item">
-                        <strong>Формат:</strong> Одностраничник, быстрый, без анимаций. Можно на Next.js или просто HTML+CSS+JS.
-                    </div>
-
-                    <div class="task-item">
-                        <strong>Деплой:</strong> Vercel/Netlify (бесплатно)
-                    </div>
-
-                    <div class="task-item">
-                        <strong>Домен:</strong> Можно взять твоеимя.dev на Namecheap (~$5/год) или бесплатный поддомен
+                    <div class="metric-card" style="margin-top: 15px;">
+                        <h4>📱 Формат & Деплой</h4>
+                        <p><strong>Формат:</strong> Одностраничник, быстрый, без анимаций. Можно на Next.js или просто HTML+CSS+JS.</p>
+                        <p style="margin-top: 10px;"><strong>Деплой:</strong> Vercel/Netlify (бесплатно)</p>
+                        <p style="margin-top: 10px;"><strong>Домен:</strong> Можно взять твоеимя.dev на Namecheap (~$5/год) или бесплатный поддомен</p>
                     </div>
                 </div>
 
-                <!-- 1.3 Резюме -->
+                <!-- 1.3 Resume -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">1.3</span>
-                        Резюме
-                    </h3>
+                    <h3>📄 1.3 Резюме</h3>
 
-                    <div class="task-item">
+                    <div class="info-box">
                         <strong>Что переписать:</strong>
-                        <div class="nested-list">
-                            <div class="nested-item">Убрать все стажировки</div>
-                            <div class="nested-item">Убрать фразы типа "улучшил софт скилы", "познакомился с технологией"</div>
-                            <div class="nested-item">Каждая позиция = 3-4 конкретных достижения с цифрами</div>
-                            <div class="nested-item">Формат: Проблема → Действие → Результат</div>
-                            <div class="nested-item">Добавить раздел "Featured Projects" со ссылками на GitHub</div>
-                            <div class="nested-item">Желаемая позиция: "Backend Engineer (Remote)"</div>
-                            <div class="nested-item">Зарплатные ожидания: от 150K RUB или эквивалент в USD для западных компаний</div>
-                            <div class="nested-item">убрать Артемовск, поставить Москву (никто не проверит)</div>
-                            <div class="nested-item">ТЫ НЕДАВНО ЗАКОНЧИЛ РАБОТУ (а не в Январе 2025)</div>
-                        </div>
+                        <ul class="requirements-list">
+                            <li>Убрать все стажировки</li>
+                            <li>Убрать фразы типа "улучшил софт скилы", "познакомился с технологией"</li>
+                            <li>Каждая позиция = <span class="highlight-num">3–4</span> конкретных достижения с цифрами</li>
+                            <li><strong>Формат:</strong> Проблема → Действие → Результат</li>
+                            <li>Добавить раздел "Featured Projects" со ссылками на GitHub</li>
+                            <li><strong>Желаемая позиция:</strong> "Backend Engineer (Remote)"</li>
+                            <li><strong>Зарплатные ожидания:</strong> от 150K RUB или эквивалент в USD для западных компаний</li>
+                            <li>Убрать Артемовск, поставить Москву</li>
+                            <li><strong>Дата:</strong> ТЫ НЕДАВНО ЗАКОНЧИЛ РАБОТУ (а не в Январе 2025)</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- 1.4 LinkedIn -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">1.4</span>
-                        LinkedIn профиль
-                    </h3>
+                    <h3>💼 1.4 LinkedIn профиль</h3>
 
-                    <div class="task-item">
+                    <div class="info-box">
                         <strong>Что настроить:</strong>
-                        <div class="nested-list">
-                            <div class="nested-item">Заголовок: "Backend Engineer | .NET Core, Node.js | Building scalable systems"</div>
-                            <div class="nested-item">About секция: 3 абзаца про опыт, фокус на результатах, указать "Remote-first"</div>
-                            <div class="nested-item">Experience: переписать как в резюме (результаты, не обязанности)</div>
-                            <div class="nested-item">Skills: выставить топ-10 скиллов, попросить бывших коллег подтвердить (endorsements)</div>
-                            <div class="nested-item">Рекомендации: запросить у 2-3 бывших коллег/лидов</div>
-                            <div class="nested-item">Featured: прикрепить личный сайт и 2-3 проекта с GitHub</div>
-                            <div class="nested-item">Настроить "Open to work" с фильтрами: Remote, Backend Engineer</div>
-                            <div class="nested-item">Язык: Английский (обязательно), русская версия профиля — дополнительно</div>
-                        </div>
+                        <ul class="requirements-list">
+                            <li><strong>Заголовок:</strong> "Backend Engineer | .NET Core, Node.js | Building scalable systems"</li>
+                            <li><strong>About секция:</strong> 3 абзаца про опыт, фокус на результатах, указать "Remote-first"</li>
+                            <li><strong>Experience:</strong> переписать как в резюме (результаты, не обязанности)</li>
+                            <li><strong>Skills:</strong> выставить топ-10 скиллов, попросить бывших коллег подтвердить (endorsements)</li>
+                            <li><strong>Рекомендации:</strong> запросить у 2–3 бывших коллег/лидов</li>
+                            <li><strong>Featured:</strong> прикрепить личный сайт и 2–3 проекта с GitHub</li>
+                            <li><strong>"Open to work":</strong> Remote, Backend Engineer</li>
+                            <li><strong>Язык:</strong> Английский (обязательно), русская версия профиля — дополнительно</li>
+                        </ul>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Фаза 2 -->
+            <!-- ФАЗА 2 -->
             <div class="phase">
                 <div class="phase-header">
-                    <div class="phase-title">Фаза 2: Массовый аутрич</div>
-                    <div class="phase-duration">⏱️ 4-8 недель</div>
+                    <div class="phase-number">2</div>
+                    <div class="phase-title">
+                        <h2>Массовый аутрич</h2>
+                        <span class="phase-duration">⏱️ 4–8 недель</span>
+                    </div>
                 </div>
 
-                <!-- 2.1 LinkedIn автоматизация -->
+                <!-- 2.1 LinkedIn Automation -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">2.1</span>
-                        LinkedIn автоматизация
-                    </h3>
+                    <h3>🤖 2.1 LinkedIn автоматизация</h3>
 
-                    <div class="task-item">
-                        <strong>Инструмент:</strong> LinkedIn Helper (или аналоги: Dux-Soup, Expandi, PhantomBuster)
+                    <div class="text-content">
+                        <p><strong>Инструмент:</strong> LinkedIn Helper (или аналоги: Dux-Soup, Expandi, PhantomBuster)</p>
                     </div>
 
-                    <div class="task-item">
-                        <strong>Настройка:</strong>
-                        <div style="margin: 15px 0;">
-                            <div style="color: #7ee787; margin-bottom: 10px;">Найти целевую аудиторию:</div>
-                            <div class="nested-list">
-                                <div class="nested-item">HR и рекрутеры в IT компаниях</div>
-                                <div class="nested-item">Founders/CTOs стартапов (10-100 человек)</div>
-                                <div class="nested-item">Теги: "Backend", "Remote", "Hiring"</div>
-                                <div class="nested-item">География: США, Европа, СНГ</div>
-                            </div>
-                        </div>
-
-                        <div style="margin: 15px 0;">
-                            <div style="color: #7ee787; margin-bottom: 10px;">Создать цепочку касаний:</div>
-                            <div class="nested-list">
-                                <div class="nested-item">День 1: Connection request с коротким сообщением</div>
-                                <div class="nested-item">День 4: Follow-up если принял (сообщение с кейсами)</div>
-                                <div class="nested-item">День 7: Последний follow-up со ссылкой на сайт</div>
-                            </div>
-                        </div>
+                    <div class="info-box">
+                        <strong>Настройка — Найти целевую аудиторию:</strong>
+                        <ul class="requirements-list">
+                            <li>HR и рекрутеры в IT компаниях</li>
+                            <li>Founders/CTOs стартапов (10–100 человек)</li>
+                            <li><strong>Теги:</strong> "Backend", "Remote", "Hiring"</li>
+                            <li><strong>География:</strong> США, Европа, СНГ</li>
+                        </ul>
                     </div>
 
-                    <div class="code-block">
-                        <pre><strong style="color: #7ee787;">Шаблон сообщения (пример):</strong>
+                    <div class="info-box" style="margin-top: 15px;">
+                        <strong>Создать цепочку касаний:</strong>
+                        <ul class="requirements-list">
+                            <li><strong>День 1:</strong> Connection request с коротким сообщением</li>
+                            <li><strong>День 4:</strong> Follow-up если принял (сообщение с кейсами)</li>
+                            <li><strong>День 7:</strong> Последний follow-up со ссылкой на сайт</li>
+                        </ul>
+                    </div>
 
-Hi [Name],
+                    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--dark);">Шаблон сообщения (пример):</h4>
+                    <div class="template-box">Hi [Name],
 
-I'm a Backend Engineer with 5 years of experience in .NET Core and Node.js, 
-specializing in building scalable APIs and optimizing database performance.
+I'm a Backend Engineer with 5 years of experience in .NET Core and Node.js, specializing in building scalable APIs and optimizing database performance.
 
-I noticed [Company] is building [что-то релевантное]. I've worked on similar 
-challenges — recently optimized SQL queries that reduced DB load by 30%.
+I noticed [Company] is building [что-то релевантное]. I've worked on similar challenges — recently optimized SQL queries that reduced DB load by 30%.
 
 Open to remote opportunities. Here's my work: [ссылка на сайт]
 
-Happy to chat if there's a fit!</pre>
-                    </div>
+Happy to chat if there's a fit!</div>
 
-                    <div class="task-item">
-                        <strong>Объем:</strong> 50-100 connection requests в неделю (LinkedIn Helper автоматизирует)
-                    </div>
-
-                    <div class="warning">
-                        <strong>Важно:</strong> Не спамить всех подряд, фильтровать по релевантности компании
+                    <div class="metric-card">
+                        <h4>📊 Объем</h4>
+                        <p><span class="highlight-num">50–100</span> connection requests в неделю (LinkedIn Helper автоматизирует)</p>
+                        <p style="margin-top: 10px;"><strong>⚠️ Важно:</strong> Не спамить всех подряд, фильтровать по релевантности компании</p>
                     </div>
                 </div>
 
-                <!-- 2.2 Кадровые агентства -->
+                <!-- 2.2 Russian Agencies -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">2.2</span>
-                        Кадровые агентства РФ
-                    </h3>
+                    <h3>🇷🇺 2.2 Кадровые агентства РФ</h3>
+                    <div class="section-goal">Они ищут удаленщиков для аутстафа в западные компании</div>
 
-                    <div class="goal">
-                        <div class="goal-label">Цель:</div>
-                        Они ищут удаленщиков для аутстафа в западные компании
-                    </div>
-
-                    <div class="task-item">
+                    <div class="info-box">
                         <strong>План действий:</strong>
-                        <div class="nested-list">
-                            <div class="nested-item">Найти рекрутеров этих агентств в LinkedIn</div>
-                            <div class="nested-item">Отправить connection request + сопроводительное</div>
-                            <div class="nested-item">Дублировать на почту (обычно есть на сайте агентства)</div>
-                        </div>
+                        <ul class="requirements-list">
+                            <li>Найти рекрутеров этих агентств в LinkedIn</li>
+                            <li>Отправить connection request + сопроводительное</li>
+                            <li>Дублировать на почту (обычно есть на сайте агентства)</li>
+                        </ul>
                     </div>
 
-                    <div class="task-item">
-                        <strong>В сообщении указать:</strong>
-                        <div class="nested-list">
-                            <div class="nested-item">Твой стек</div>
-                            <div class="nested-item">Опыт удаленной работы</div>
-                            <div class="nested-item">Готовность к аутстафу</div>
-                            <div class="nested-item">Ссылка на портфолио</div>
-                        </div>
-                    </div>
-
-                    <div class="code-block">
-                        <pre><strong style="color: #7ee787;">Шаблон письма:</strong>
-
-Здравствуйте!
+                    <h4 style="margin-top: 20px; margin-bottom: 10px; color: var(--dark);">Шаблон письма:</h4>
+                    <div class="template-box">Здравствуйте!
 
 Ищу удаленную позицию Backend Engineer через аутстаф.
 
@@ -677,80 +697,258 @@ Happy to chat if there's a fit!</pre>
 Открыт к обсуждению проектов. Удобно общаться в Telegram/письменно.
 
 С уважением,
-[Имя]</pre>
-                    </div>
+[Имя]</div>
 
-                    <div class="task-item">
-                        <strong>Объем:</strong> 20-30 агентств за первую неделю
+                    <div class="metric-card">
+                        <h4>📊 Объем</h4>
+                        <p><span class="highlight-num">20–30</span> агентств за первую неделю</p>
                     </div>
                 </div>
 
-                <!-- 2.3 Доски вакансий -->
+                <!-- 2.3 Job Boards -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">2.3</span>
-                        Прямой поиск на досках вакансий
-                    </h3>
+                    <h3>💼 2.3 Прямой поиск на досках вакансий</h3>
 
-                    <div class="task-item">
+                    <div class="info-box">
                         <strong>Где искать:</strong>
-                        <div style="margin: 15px 0;">
-                            <div style="color: #7ee787; margin-bottom: 10px;">Западные remote доски:</div>
-                            <div class="nested-list">
-                                <div class="nested-item">RemoteOK.com</div>
-                                <div class="nested-item">WeWorkRemotely.com</div>
-                                <div class="nested-item">Arc.dev</div>
-                                <div class="nested-item">Turing.com (для СНГ)</div>
-                            </div>
-                        </div>
-
-                        <div style="margin: 15px 0;">
-                            <div style="color: #7ee787; margin-bottom: 10px;">Российские:</div>
-                            <div class="nested-list">
-                                <div class="nested-item">Хабр Карьера (фильтр: удаленно)</div>
-                            </div>
-                        </div>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0; padding-left: 25px; position: relative; color: var(--text);">
+                                <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">▸</span>
+                                <strong>Западные remote доски:</strong> RemoteOK.com, WeWorkRemotely.com, Arc.dev, Turing.com (для СНГ)
+                            </li>
+                            <li style="padding: 8px 0; padding-left: 25px; position: relative; color: var(--text);">
+                                <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">▸</span>
+                                <strong>Российские:</strong> Хабр Карьера (фильтр: удаленно)
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="task-item">
+                    <div class="info-box" style="margin-top: 15px;">
                         <strong>Тактика:</strong>
-                        <div class="nested-list">
-                            <div class="nested-item">Откликаться на 10-15 вакансий в день</div>
-                            <div class="nested-item">Сопроводительное письмо = 3-4 предложения про релевантный опыт + ссылка на сайт</div>
-                            <div class="nested-item">Отслеживать отклики в табличке (Notion/Excel)</div>
-                        </div>
+                        <ul class="requirements-list">
+                            <li>Откликаться на <span class="highlight-num">10–15</span> вакансий в день</li>
+                            <li>Сопроводительное письмо = 3–4 предложения про релевантный опыт + ссылка на сайт</li>
+                            <li>Отслеживать отклики в табличке (Notion/Excel)</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- 2.4 Telegram/Discord -->
                 <div class="section">
-                    <h3 class="section-title">
-                        <span class="section-number">2.4</span>
-                        Telegram/Discord каналы
-                    </h3>
+                    <h3>📱 2.4 Telegram/Discord каналы</h3>
 
-                    <div class="task-item">
+                    <div class="info-box">
                         <strong>Где:</strong>
-                        <div class="nested-list">
-                            <div class="nested-item">Телеграм каналы с вакансиями (.NET Jobs, Remote Dev Jobs RU)</div>
-                            <div class="nested-item">Discord сервера tech стартапов</div>
-                            <div class="nested-item">Slack сообщества (Reactiflux, Rands Leadership)</div>
-                        </div>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0; padding-left: 25px; position: relative; color: var(--text);">
+                                <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">▸</span>
+                                Телеграм каналы с вакансиями (.NET Jobs, Remote Dev Jobs RU)
+                            </li>
+                            <li style="padding: 8px 0; padding-left: 25px; position: relative; color: var(--text);">
+                                <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">▸</span>
+                                Discord сервера tech стартапов
+                            </li>
+                            <li style="padding: 8px 0; padding-left: 25px; position: relative; color: var(--text);">
+                                <span style="position: absolute; left: 0; color: var(--primary); font-weight: bold;">▸</span>
+                                Slack сообщества (Reactiflux, Rands Leadership)
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="task-item">
-                        <strong>Тактика:</strong> Мониторить ежедневно, откликаться на подходящее быстро (первые 10 откликов имеют преимущество)
+                    <div class="metric-card">
+                        <h4>🎯 Тактика</h4>
+                        <p>Мониторить ежедневно, откликаться на подходящее быстро (первые 10 откликов имеют преимущество)</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ФАЗА 3 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-number">3</div>
+                    <div class="phase-title">
+                        <h2>Прохождение собеседований</h2>
+                        <span class="phase-duration">⏱️ Непрерывный процесс</span>
+                    </div>
+                </div>
+
+                <!-- 3.1 Interview Prep -->
+                <div class="section">
+                    <h3>🎤 3.1 Подготовка к интервью</h3>
+                    <div class="section-goal">Проблема: Устная речь затруднена → Решение: Async этапы и визуальные материалы</div>
+
+                    <div class="info-box">
+                        <strong>Просить больше async этапов:</strong>
+                        <ul class="requirements-list">
+                            <li>"I prefer to start with a coding challenge or take-home assignment"</li>
+                            <li>"Could we do first round via email/written questions?"</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 15px;">
+                        <strong>Подготовить шаблоны ответов:</strong>
+                        <ul class="requirements-list">
+                            <li>Топ-10 вопросов на собесе</li>
+                            <li>Короткие четкие ответы (30–60 сек)</li>
+                            <li>Записать на диктофон, отрепетировать</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 15px;">
+                        <strong>Использовать визуальные материалы:</strong>
+                        <ul class="requirements-list">
+                            <li>Screen share с диаграммами</li>
+                            <li>Комментарии в коде (если live coding)</li>
+                            <li>Презентация с кейсами</li>
+                        </ul>
+                    </div>
+
+                    <div class="important-note" style="margin-top: 20px;">
+                        <strong>💡 Честность про формат:</strong> Если совсем тяжело — можно написать: <br><br>
+                        <em>"I have a speech condition but communicate effectively in writing. Can we focus on code review and written technical discussion?"</em>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- METRICS & MILESTONES -->
+            <div style="margin-top: 50px; border-top: 2px solid var(--border); padding-top: 30px;">
+                <h2 style="color: var(--dark); font-size: 1.8em; margin-bottom: 25px;">📈 Метрики успеха</h2>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h4>Неделя 1–2</h4>
+                        <ul class="requirements-list">
+                            <li>3 проекта на GitHub залиты</li>
+                            <li>Сайт задеплоен</li>
+                            <li>Резюме и LinkedIn обновлены</li>
+                        </ul>
+                    </div>
+
+                    <div class="metric-card">
+                        <h4>Неделя 3–6</h4>
+                        <ul class="requirements-list">
+                            <li>200+ connection requests отправлено</li>
+                            <li>50+ откликов на вакансии</li>
+                            <li>20+ агентств проспамлено</li>
+                            <li>10+ первичных ответов получено</li>
+                        </ul>
+                    </div>
+
+                    <div class="metric-card">
+                        <h4>Неделя 7–12</h4>
+                        <ul class="requirements-list">
+                            <li>5+ технических интервью</li>
+                            <li>2–3 тестовых задания</li>
+                            <li>1–2 оффера</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Фаза 3 -->
-            <div class="phase">
-                <div class="phase-header">
-                    <div class="phase-title">Фаза 3: Прохождение собеседований</div>
-                    <div class="phase-duration">⏱️ Непрерывный процесс</div>
-                </div>
+            <!-- DAILY CHECKLIST -->
+            <div style="margin-top: 40px;">
+                <h2 style="color: var(--dark); font-size: 1.8em; margin-bottom: 20px;">✅ Чеклист на каждый день</h2>
 
-                <!-- 3.1 Подготовка -->
-                <div class="section">
-                    <h
+                <div class="daily-checklist">
+                    <div class="daily-item">
+                        <div class="daily-time">30 мин</div>
+                        <div class="daily-content">
+                            <h4>🌅 Утро</h4>
+                            <p>Проверить новые вакансии на досках → Откликнуться на 3–5 подходящих</p>
+                        </div>
+                    </div>
+
+                    <div class="daily-item">
+                        <div class="daily-time">1 час</div>
+                        <div class="daily-content">
+                            <h4>☀️ День</h4>
+                            <p>LinkedIn: принять новые connections, отправить 10 новых → Ответить на сообщения от рекрутеров</p>
+                        </div>
+                    </div>
+
+                    <div class="daily-item">
+                        <div class="daily-time">30 мин</div>
+                        <div class="daily-content">
+                            <h4>🌙 Вечер</h4>
+                            <p>Обновить табличку с откликами → Подготовиться к завтрашним интервью (если есть)</p>
+                        </div>
+                    </div>
+
+                    <div class="daily-item">
+                        <div class="daily-time">Раз/неделю</div>
+                        <div class="daily-content">
+                            <h4>📊 Еженедельно</h4>
+                            <p>Обновить что-то на GitHub (активность = видимость) → Запостить в LinkedIn про свой прогресс/кейс</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEY INSIGHTS -->
+            <div style="margin-top: 40px;">
+                <h2 style="color: var(--dark); font-size: 1.8em; margin-bottom: 20px;">💡 Важно помнить</h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
+                    <div class="important-note">
+                        <strong>📈 Объем решает</strong><br>
+                        Чем больше касаний, тем выше шанс найти компанию, где коммуникация не критична
+                    </div>
+
+                    <div class="important-note">
+                        <strong>⏳ Async > sync</strong><br>
+                        Фокус на компании с async культурой (западные стартапы, продуктовые команды)
+                    </div>
+
+                    <div class="important-note">
+                        <strong>💻 Код говорит сам</strong><br>
+                        Твоя сильная сторона — результат в коде, делай упор на это
+                    </div>
+
+                    <div class="important-note">
+                        <strong>⏰ Терпение</strong><br>
+                        Remote работа для СНГ с ДЦП — марафон, не спринт. Нормально, если уйдет 2–3 месяца
+                    </div>
+
+                    <div class="important-note">
+                        <strong>💪 Не сдаваться</strong><br>
+                        Отказы будут, но нужен только ОДИН правильный оффер
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <div style="margin-top: 40px; margin-bottom: 40px;">
+                <h2 style="color: var(--dark); font-size: 1.8em; margin-bottom: 20px;">📅 Дедлайны</h2>
+
+                <div style="background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+                    <div style="display: flex; border-bottom: 1px solid var(--border);">
+                        <div style="flex: 1; background: var(--primary); color: white; padding: 15px; font-weight: 600;">День 1–14</div>
+                        <div style="flex: 2; padding: 15px; color: var(--text);">База готова (GitHub, сайт, профили)</div>
+                    </div>
+                    <div style="display: flex; border-bottom: 1px solid var(--border);">
+                        <div style="flex: 1; background: var(--secondary); color: white; padding: 15px; font-weight: 600;">День 15–60</div>
+                        <div style="flex: 2; padding: 15px; color: var(--text);">Массовый аутрич (ежедневно)</div>
+                    </div>
+                    <div style="display: flex; border-bottom: 1px solid var(--border);">
+                        <div style="flex: 1; background: var(--accent); color: white; padding: 15px; font-weight: 600;">День 60–90</div>
+                        <div style="flex: 2; padding: 15px; color: var(--text);">Активная фаза интервью</div>
+                    </div>
+                    <div style="display: flex;">
+                        <div style="flex: 1; background: #10b981; color: white; padding: 15px; font-weight: 600;">День 90</div>
+                        <div style="flex: 2; padding: 15px; color: var(--text);"><strong>Цель — минимум 1 оффер</strong></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p style="font-size: 1.3em; margin-bottom: 15px;">🎯 <span class="footer-highlight">Главное — начать и не останавливаться.</span></p>
+            <p>Удачи в поиске remote работы! 🚀</p>
+        </footer>
+
+    </div>
+</body>
+</html>
