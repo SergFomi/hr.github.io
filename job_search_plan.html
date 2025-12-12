@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>План поиска работы - Backend Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #161b22;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0d1117 0%, #1f2937 100%);
+            padding: 40px;
+            border-bottom: 2px solid #58a6ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '{ }';
+            position: absolute;
+            font-size: 200px;
+            color: #21262d;
+            right: -50px;
+            top: -70px;
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #58a6ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+        }
+
+        .header .subtitle {
+            color: #8b949e;
+            font-size: 1.1em;
+        }
+
+        .terminal-line {
+            color: #7ee787;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .terminal-line::before {
+            content: '$ ';
+            color: #58a6ff;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .phase {
+            margin-bottom: 50px;
+            border-left: 3px solid #f85149;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .phase::before {
+            content: '⚡';
+            position: absolute;
+            left: -15px;
+            background: #0d1117;
+            padding: 5px;
+            font-size: 1.2em;
+        }
+
+        .phase-header {
+            background: #21262d;
+            padding: 20px;
+            margin: 0 0 30px -30px;
+            border-radius: 6px;
+            border-left: 3px solid #f85149;
+        }
+
+        .phase-title {
+            font-size: 1.8em;
+            color: #f85149;
+            margin-bottom: 5px;
+        }
+
+        .phase-duration {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            background: #0d1117;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: #58a6ff;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+        }
+
+        .section-number {
+            display: inline-block;
+            background: #58a6ff;
+            color: #0d1117;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #58a6ff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .goal {
+            background: #1f6feb20;
+            border-left: 3px solid #58a6ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .goal-label {
+            color: #58a6ff;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .task-list {
+            margin: 15px 0;
+        }
+
+        .task-item {
+            background: #21262d;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 3px solid #7ee787;
+            transition: all 0.2s ease;
+        }
+
+        .task-item:hover {
+            transform: translateX(5px);
+            border-left-color: #58a6ff;
+        }
+
+        .task-item strong {
+            color: #7ee787;
+        }
+
+        .nested-list {
+            margin: 10px 0 10px 20px;
+            padding-left: 15px;
+            border-left: 2px solid #30363d;
+        }
+
+        .nested-item {
+            padding: 8px 0;
+            color: #8b949e;
+        }
+
+        .nested-item::before {
+            content: '→ ';
+            color: #58a6ff;
+        }
+
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: 'example.txt';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            color: #8b949e;
+            font-size: 0.8em;
+        }
+
+        .code-block pre {
+            color: #c9d1d9;
+            white-space: pre-wrap;
+        }
+
+        .highlight {
+            color: #ffa657;
+            font-weight: bold;
+        }
+
+        .metric {
+            background: #1f6feb20;
+            color: #58a6ff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin: 3px;
+        }
+
+        .project-example {
+            background: #21262d;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+
+        .project-title {
+            color: #ffa657;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .metrics-grid {
+            background: #0d1117;
+            padding: 30px;
+            border-radius: 6px;
+            margin: 30px 0;
+            border: 2px solid #7ee787;
+        }
+
+        .metrics-title {
+            color: #7ee787;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .metric-row {
+            margin: 15px 0;
+            padding: 15px;
+            background: #21262d;
+            border-radius: 4px;
+        }
+
+        .metric-label {
+            color: #8b949e;
+            margin-bottom: 5px;
+        }
+
+        .checklist {
+            background: #21262d;
+            padding: 25px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border: 1px solid #30363d;
+        }
+
+        .checklist-title {
+            color: #ffa657;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .checklist-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: #0d1117;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .checklist-item::before {
+            content: '☐';
+            color: #7ee787;
+            font-size: 1.5em;
+        }
+
+        .important-note {
+            background: #f8514920;
+            border-left: 4px solid #f85149;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .important-note strong {
+            color: #f85149;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .timeline {
+            background: #21262d;
+            padding: 30px;
+            border-radius: 6px;
+            margin: 30px 0;
+        }
+
+        .timeline-title {
+            color: #58a6ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .timeline-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #7ee787;
+            padding-left: 20px;
+        }
+
+        .timeline-date {
+            color: #ffa657;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .phase {
+                padding-left: 15px;
+            }
+
+            .phase-header {
+                margin-left: -15px;
+            }
+        }
+
+        .tip {
+            background: #7ee78720;
+            border-left: 3px solid #7ee787;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .tip::before {
+            content: '💡 ';
+            font-size: 1.2em;
+        }
+
+        .warning {
+            background: #ffa65720;
+            border-left: 3px solid #ffa657;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .warning::before {
+            content: '⚠️ ';
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>// План для Михаила по поиску удаленной работы как разработчик</h1>
+            <div class="subtitle">Поиск remote работы для Backend Developer</div>
+            <div class="terminal-line">execute job_search_strategy.sh --mode=aggressive --async=true</div>
+        </div>
+
+        <div class="content">
+            <!-- Фаза 1 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Фаза 1: Подготовка базы</div>
+                    <div class="phase-duration">⏱️ 2-3 недели</div>
+                </div>
+
+                <!-- 1.1 GitHub Portfolio -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">1.1</span>
+                        GitHub Portfolio
+                    </h3>
+
+                    <div class="goal">
+                        <div class="goal-label">Цель:</div>
+                        Показать, что ты делаешь рабочий код, который решает проблемы
+                    </div>
+
+                    <div class="task-list">
+                        <div class="task-item">
+                            <strong>Что делать:</strong>
+                            <div class="nested-list">
+                                <div class="nested-item">Создать 2-3 полноценных проекта (не учебные, а как будто для реального бизнеса)</div>
+                            </div>
+                        </div>
+
+                        <div class="task-item">
+                            <strong>Каждый проект должен иметь:</strong>
+                            <div class="nested-list">
+                                <div class="nested-item">Подробный README с описанием проблемы и решения</div>
+                                <div class="nested-item">Схему архитектуры (можно в Miro/Figma → скриншот)</div>
+                                <div class="nested-item">Инструкцию по запуску (Docker compose для простоты)</div>
+                                <div class="nested-item">Примеры API запросов (Postman коллекция или Swagger)</div>
+                                <div class="nested-item">CI/CD pipeline (GitHub Actions)</div>
+                                <div class="nested-item">Unit тесты с покрытием</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-example">
+                        <div class="project-title">Примеры проектов:</div>
+                        
+                        <div style="margin: 15px 0;">
+                            <strong style="color: #7ee787;">1. Microservice для аналитики</strong> (то, что ты умеешь):
+                            <div class="nested-list">
+                                <div class="nested-item">ASP.NET Core WebAPI + PostgreSQL</div>
+                                <div class="nested-item">Обработка больших объемов данных</div>
+                                <div class="nested-item">Кеширование (Redis), очереди (RabbitMQ)</div>
+                                <div class="nested-item"><span class="metric">Метрика: "обрабатывает 10K запросов/сек"</span></div>
+                            </div>
+                        </div>
+
+                        <div style="margin: 15px 0;">
+                            <strong style="color: #7ee787;">2. Telegram Bot + Admin Panel</strong> (актуально для рынка):
+                            <div class="nested-list">
+                                <div class="nested-item">Node.js/Express API</div>
+                                <div class="nested-item">React admin панель</div>
+                                <div class="nested-item">Интеграция с платежами</div>
+                                <div class="nested-item"><span class="metric">Метрика: "ready for 100K+ users"</span></div>
+                            </div>
+                        </div>
+
+                        <div style="margin: 15px 0;">
+                            <strong style="color: #7ee787;">3. Интеграционный сервис</strong> (покажет твой скилл):
+                            <div class="nested-list">
+                                <div class="nested-item">Парсер данных с внешних API</div>
+                                <div class="nested-item">Трансформация и валидация данных</div>
+                                <div class="nested-item">Webhook обработка</div>
+                                <div class="nested-item"><span class="metric">Метрика: "синхронизирует 50K записей/день"</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning">
+                        <strong>Важно:</strong> В описании каждого проекта указывай ЦИФРЫ и РЕЗУЛЬТАТ, не технологии.
+                    </div>
+                </div>
+
+                <!-- 1.2 Личный сайт -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">1.2</span>
+                        Личный сайт-портфолио
+                    </h3>
+
+                    <div class="goal">
+                        <div class="goal-label">Цель:</div>
+                        Показать себя как продукт, а не просто кодера
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Что должно быть на сайте:</strong>
+                        <div class="nested-list">
+                            <div class="nested-item">Hero секция: "Backend Engineer | 5 лет опыта | Remote-only"</div>
+                            <div class="nested-item">Кейсы: 3 проекта с GitHub с акцентом на бизнес-результаты</div>
+                            <div class="nested-item">Цифры: "Оптимизировал запросы → снизил нагрузку на 30%"</div>
+                            <div class="nested-item">Стек: Технологии с иконками (визуально)</div>
+                            <div class="nested-item">Контакты: Email, LinkedIn, GitHub, Telegram</div>
+                            <div class="nested-item">CTA: "Open for remote opportunities" с кнопкой на календарь или форму</div>
+                        </div>
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Формат:</strong> Одностраничник, быстрый, без анимаций. Можно на Next.js или просто HTML+CSS+JS.
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Деплой:</strong> Vercel/Netlify (бесплатно)
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Домен:</strong> Можно взять твоеимя.dev на Namecheap (~$5/год) или бесплатный поддомен
+                    </div>
+                </div>
+
+                <!-- 1.3 Резюме -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">1.3</span>
+                        Резюме
+                    </h3>
+
+                    <div class="task-item">
+                        <strong>Что переписать:</strong>
+                        <div class="nested-list">
+                            <div class="nested-item">Убрать все стажировки</div>
+                            <div class="nested-item">Убрать фразы типа "улучшил софт скилы", "познакомился с технологией"</div>
+                            <div class="nested-item">Каждая позиция = 3-4 конкретных достижения с цифрами</div>
+                            <div class="nested-item">Формат: Проблема → Действие → Результат</div>
+                            <div class="nested-item">Добавить раздел "Featured Projects" со ссылками на GitHub</div>
+                            <div class="nested-item">Желаемая позиция: "Backend Engineer (Remote)"</div>
+                            <div class="nested-item">Зарплатные ожидания: от 150K RUB или эквивалент в USD для западных компаний</div>
+                            <div class="nested-item">убрать Артемовск, поставить Москву (никто не проверит)</div>
+                            <div class="nested-item">ТЫ НЕДАВНО ЗАКОНЧИЛ РАБОТУ (а не в Январе 2025)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1.4 LinkedIn -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">1.4</span>
+                        LinkedIn профиль
+                    </h3>
+
+                    <div class="task-item">
+                        <strong>Что настроить:</strong>
+                        <div class="nested-list">
+                            <div class="nested-item">Заголовок: "Backend Engineer | .NET Core, Node.js | Building scalable systems"</div>
+                            <div class="nested-item">About секция: 3 абзаца про опыт, фокус на результатах, указать "Remote-first"</div>
+                            <div class="nested-item">Experience: переписать как в резюме (результаты, не обязанности)</div>
+                            <div class="nested-item">Skills: выставить топ-10 скиллов, попросить бывших коллег подтвердить (endorsements)</div>
+                            <div class="nested-item">Рекомендации: запросить у 2-3 бывших коллег/лидов</div>
+                            <div class="nested-item">Featured: прикрепить личный сайт и 2-3 проекта с GitHub</div>
+                            <div class="nested-item">Настроить "Open to work" с фильтрами: Remote, Backend Engineer</div>
+                            <div class="nested-item">Язык: Английский (обязательно), русская версия профиля — дополнительно</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Фаза 2 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Фаза 2: Массовый аутрич</div>
+                    <div class="phase-duration">⏱️ 4-8 недель</div>
+                </div>
+
+                <!-- 2.1 LinkedIn автоматизация -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">2.1</span>
+                        LinkedIn автоматизация
+                    </h3>
+
+                    <div class="task-item">
+                        <strong>Инструмент:</strong> LinkedIn Helper (или аналоги: Dux-Soup, Expandi, PhantomBuster)
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Настройка:</strong>
+                        <div style="margin: 15px 0;">
+                            <div style="color: #7ee787; margin-bottom: 10px;">Найти целевую аудиторию:</div>
+                            <div class="nested-list">
+                                <div class="nested-item">HR и рекрутеры в IT компаниях</div>
+                                <div class="nested-item">Founders/CTOs стартапов (10-100 человек)</div>
+                                <div class="nested-item">Теги: "Backend", "Remote", "Hiring"</div>
+                                <div class="nested-item">География: США, Европа, СНГ</div>
+                            </div>
+                        </div>
+
+                        <div style="margin: 15px 0;">
+                            <div style="color: #7ee787; margin-bottom: 10px;">Создать цепочку касаний:</div>
+                            <div class="nested-list">
+                                <div class="nested-item">День 1: Connection request с коротким сообщением</div>
+                                <div class="nested-item">День 4: Follow-up если принял (сообщение с кейсами)</div>
+                                <div class="nested-item">День 7: Последний follow-up со ссылкой на сайт</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><strong style="color: #7ee787;">Шаблон сообщения (пример):</strong>
+
+Hi [Name],
+
+I'm a Backend Engineer with 5 years of experience in .NET Core and Node.js, 
+specializing in building scalable APIs and optimizing database performance.
+
+I noticed [Company] is building [что-то релевантное]. I've worked on similar 
+challenges — recently optimized SQL queries that reduced DB load by 30%.
+
+Open to remote opportunities. Here's my work: [ссылка на сайт]
+
+Happy to chat if there's a fit!</pre>
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Объем:</strong> 50-100 connection requests в неделю (LinkedIn Helper автоматизирует)
+                    </div>
+
+                    <div class="warning">
+                        <strong>Важно:</strong> Не спамить всех подряд, фильтровать по релевантности компании
+                    </div>
+                </div>
+
+                <!-- 2.2 Кадровые агентства -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">2.2</span>
+                        Кадровые агентства РФ
+                    </h3>
+
+                    <div class="goal">
+                        <div class="goal-label">Цель:</div>
+                        Они ищут удаленщиков для аутстафа в западные компании
+                    </div>
+
+                    <div class="task-item">
+                        <strong>План действий:</strong>
+                        <div class="nested-list">
+                            <div class="nested-item">Найти рекрутеров этих агентств в LinkedIn</div>
+                            <div class="nested-item">Отправить connection request + сопроводительное</div>
+                            <div class="nested-item">Дублировать на почту (обычно есть на сайте агентства)</div>
+                        </div>
+                    </div>
+
+                    <div class="task-item">
+                        <strong>В сообщении указать:</strong>
+                        <div class="nested-list">
+                            <div class="nested-item">Твой стек</div>
+                            <div class="nested-item">Опыт удаленной работы</div>
+                            <div class="nested-item">Готовность к аутстафу</div>
+                            <div class="nested-item">Ссылка на портфолио</div>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><strong style="color: #7ee787;">Шаблон письма:</strong>
+
+Здравствуйте!
+
+Ищу удаленную позицию Backend Engineer через аутстаф.
+
+Опыт: 5 лет коммерческой разработки (.NET Core, Node.js)
+Специализация: проектирование архитектуры, оптимизация производительности, интеграции
+
+Недавние проекты:
+- Оптимизация SQL запросов → снижение нагрузки на БД на 30%
+- Разработка Telegram Mini Apps с интеграцией платежей
+- Миграция legacy проектов на современный стек
+
+Портфолио: [ссылка]
+Резюме: [ссылка]
+
+Открыт к обсуждению проектов. Удобно общаться в Telegram/письменно.
+
+С уважением,
+[Имя]</pre>
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Объем:</strong> 20-30 агентств за первую неделю
+                    </div>
+                </div>
+
+                <!-- 2.3 Доски вакансий -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">2.3</span>
+                        Прямой поиск на досках вакансий
+                    </h3>
+
+                    <div class="task-item">
+                        <strong>Где искать:</strong>
+                        <div style="margin: 15px 0;">
+                            <div style="color: #7ee787; margin-bottom: 10px;">Западные remote доски:</div>
+                            <div class="nested-list">
+                                <div class="nested-item">RemoteOK.com</div>
+                                <div class="nested-item">WeWorkRemotely.com</div>
+                                <div class="nested-item">Arc.dev</div>
+                                <div class="nested-item">Turing.com (для СНГ)</div>
+                            </div>
+                        </div>
+
+                        <div style="margin: 15px 0;">
+                            <div style="color: #7ee787; margin-bottom: 10px;">Российские:</div>
+                            <div class="nested-list">
+                                <div class="nested-item">Хабр Карьера (фильтр: удаленно)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Тактика:</strong>
+                        <div class="nested-list">
+                            <div class="nested-item">Откликаться на 10-15 вакансий в день</div>
+                            <div class="nested-item">Сопроводительное письмо = 3-4 предложения про релевантный опыт + ссылка на сайт</div>
+                            <div class="nested-item">Отслеживать отклики в табличке (Notion/Excel)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.4 Telegram/Discord -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-number">2.4</span>
+                        Telegram/Discord каналы
+                    </h3>
+
+                    <div class="task-item">
+                        <strong>Где:</strong>
+                        <div class="nested-list">
+                            <div class="nested-item">Телеграм каналы с вакансиями (.NET Jobs, Remote Dev Jobs RU)</div>
+                            <div class="nested-item">Discord сервера tech стартапов</div>
+                            <div class="nested-item">Slack сообщества (Reactiflux, Rands Leadership)</div>
+                        </div>
+                    </div>
+
+                    <div class="task-item">
+                        <strong>Тактика:</strong> Мониторить ежедневно, откликаться на подходящее быстро (первые 10 откликов имеют преимущество)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Фаза 3 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Фаза 3: Прохождение собеседований</div>
+                    <div class="phase-duration">⏱️ Непрерывный процесс</div>
+                </div>
+
+                <!-- 3.1 Подготовка -->
+                <div class="section">
+                    <h
